@@ -36,7 +36,7 @@ def create_app():
     # Initialize Flask-SQLAlchemy
     db = SQLAlchemy(app)
 
-    class User(db.Model):
+    class User(db.Model, UserMixin):
         __tablename__ = 'users'
         id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
         password = db.Column(db.String(100))
@@ -116,18 +116,17 @@ def create_app():
     @app.route('/login', methods=['GET', 'POST'])
     def login_post():
         form = LoginForm()
-        if request.method == 'GET':
-            return render_template('login.html', title='Авторизация', form=form,
-                                   success=True)
-        elif request.method == 'POST':
+        if request.method == 'POST':
             username = request.form.get('username')
             password = request.form.get('password')
             remember = True if request.form.get('remember') else False
             user = User.query.filter_by(username=username).first()
-            if not user or not check_password_hash(user.password, password): 
-                return render_template('login.html', title='Авторизация',
-                                       form=form, success=False)
+            if not user:
+                flash('<div class="alert alert-danger" role="alert">Неверное имя пользователя или пароль</div>')
+                return redirect('/login')
+            login_user(user)
             return redirect('/')
+        return render_template('login.html', form=form)
 
     return app
 

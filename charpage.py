@@ -23,8 +23,6 @@ def char_page(name):
                 data = i
                 break
     print(data)
-    if not data['image']:
-        data['image'] = 'static/img/nophoto.png'
     return render_template('character_page.html', char_info=data)
 
 if __name__ == '__main__':
