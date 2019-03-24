@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    {% if char_info['name'] %}
+        <div class="card" style="width: 35rem;">
+        <img src='{{char_info['image']}}' class="card-img-top"
+        alt="{{char_info['name']}}">
+        {% if char_info['quote'] %}
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{char_info['quote']}}</p>
+            </blockquote>
+          </div>
+        {% endif %}
+        <div class="card-body">
+        <h5 class="card-title">{{char_info['name']}}</h5>
+        {% if char_info['title'] %}
+          <p class="card-text"><b>{{'Откуда: ' + char_info["title"] + '\n'}}</b></p>
+        {% endif %}
+          {% if char_info['description'] %}
+            <p class="card-text">{{char_info["description"]}}</p>
+          {% else %}
+            <p class="card-text">Об этом персонаже ничего не известно</p>
+          {% endif %}
+        {% else %}
+          <div class="alert alert-warning" role="alert">
+          Этой страницы не существует
+          </div>
+    {% endif %}
