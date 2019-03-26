@@ -10,7 +10,7 @@
       "name": "Завтра хорошая погода",
       "description": "",
       "image": "https://ak5.picdn.net/shutterstock/videos/3775625/thumb/1.jpg?i10c=img.resize(height:160)",
-      "title": "тайтл"
+      "source": "тайтл"
     },
     {
       "name": "Послезавтра дождь",
@@ -20,13 +20,13 @@
       "name": "Сегодня хорошая погода",
       "quote": "и завтра будет такая же",
       "description": "Невероятно, сегодня хорошая погодаНевероятно, сегодня хорошая погодаНевероятно, сегодня хорошая погодаНевероятно, сегодня хорошая погода",
-      "image": "https://www.w3schools.com/w3css/img_lights.jpg"
+      "image": "../static/img/1.png"
     },
     {
       "name": "Завтра хорошая погода",
       "description": "",
       "image": "https://ak5.picdn.net/shutterstock/videos/3775625/thumb/1.jpg?i10c=img.resize(height:160)",
-      "title": "тайтл"
+      "source": "тайтл"
     },
     {
       "name": "Послезавтра дождь",
@@ -41,7 +41,7 @@
       "name": "Завтра хорошая погода",
       "description": "",
       "image": "https://ak5.picdn.net/shutterstock/videos/3775625/thumb/1.jpg?i10c=img.resize(height:160)",
-      "title": "тайтл"
+      "source": "тайтл"
     },
     {
       "name": "Послезавтра дождь",

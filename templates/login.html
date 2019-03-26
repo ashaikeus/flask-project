@@ -26,4 +26,7 @@
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit() }}</p>
     </form>
+    {% if wrong %}
+    <div class="alert alert-danger" role="alert">Неверное имя пользователя или пароль</div>
+    {% endif %}
 {% endblock %}
