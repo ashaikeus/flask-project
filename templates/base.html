@@ -10,7 +10,7 @@
 </head>
   <body>
     <header>
-    <body style="background-color: #222222;">
+    <body style="background-color: #222225;">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">Новости</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,13 +18,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      {% if "username" in session %}
-        <a class="navbar-brand" href="/logout">{{ session['username'] }}</a>
+      {% if name != 'гость' %}
+        <a class="nav-item nav-link" href="/logout">Выйти из аккаунта <b>{{ name }}</b></a>
       {% else %}
         <a class="nav-item nav-link" href="/login">Войти</a>
       {% endif %}
       <a class="nav-item nav-link" href="/characters">Персонажи</a>
-      <a class="nav-item nav-link" href="/media">Галерея</a>
     </div>
   </div>
 </nav>

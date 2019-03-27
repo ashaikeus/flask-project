@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="ru">
+    {% if user_info['username'] %}
+      {% if user_info['username'] == name %}
+      <h2>Ваша страница</h2>
+      {% else %}
+      <h2>Страница пользователя </h2>
+      {% endif %}
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID:</th>
+      <th scope="col">Имя:</th>
+      <th scope="col">Дата регистрации:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ user_info['id'] }}</th>
+      <td>{{ user_info['username'] }}</td>
+      <td>{{ user_info['registration_date'] }}</td>
+    {% else %}
+          <div class="alert alert-warning" role="alert">
+          Этой страницы не существует
+          </div>
+    {% endif %}
+{% endblock %}

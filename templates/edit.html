@@ -1,8 +1,8 @@
 {% extends "base.html" %}
  
 {% block content %}
-    <title>Добавить персонажа</title>
-    <h1>Добавление персонажа</h1>
+    <title>Изменить персонажа</title>
+    <h1>Изменение персонажа</h1>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
@@ -25,13 +25,6 @@
             {{ form.source.label }}<br>
             {{ form.source }} <br>
         </p>
-        <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample"
-        role="button" aria-expanded="false" aria-controls="collapseExample" style=
-        'background-color: #DDDDDD; border-color: #555555'>
-        Дополнительно </a>
-        </p>
-        <div class="collapse" id="collapseExample">
         {{ form.role.label }}<br>
         {{ form.role }}<br>
         {{ form.appearance.label }} <br>
@@ -52,7 +45,4 @@
 </div>
         <p>{{ form.submit() }}</p>
     </form>
-{% if wrong %}
-    <div class="alert alert-danger" role="alert">Не удалось добавить персонажа в базу данных. Возможно, про него уже есть статья.</div>
-    {% endif %}
 {% endblock %}

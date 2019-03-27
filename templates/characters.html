@@ -3,7 +3,7 @@
     <body>
     <div class="container">
       <div class="row">
-    {% for item in characters['characters'] %}
+    {% for item in characters %}
       <div class="col-md-4 mb-4">
       <div class="card" style="width: 18rem;">
     {% if item['image'] %}
@@ -27,16 +27,14 @@
       {% else %}
         <p class="card-text">Об этом персонаже ничего не известно</p>
       {% endif %}
-      {% if item['source'] %}
-      <a href="/characters/{{item['source']}}/{{item['name']}}"
+      <a href="/characters/{{item['id']}}"
       class="btn btn-primary">Перейти на страницу</a>
-      {% else %}
-      <a href="/characters/{{item['name']}}"
-      class="btn btn-primary">Перейти на страницу</a>
-      {% endif %}
     </div>
     </div>
     </div>
+    </div>
+    {% else %}
+    <h2>Пока что здесь ничего нет</h2><br>
     </div>
     {% endfor %}
     </div>

@@ -10,19 +10,24 @@
   linear-gradient(rgba(0, 0, 250, 0.25), rgba(125, 250, 250, 0.45))">
   <div class="container">
     <h1 class="display-4">Добро пожаловать, {{ name }}</h1>
+    Сайт Wikicharia является каталогом персонажей из различных сериалов, игр и 
+    прочих продуктов медиа. Каждый авторизованный пользователь может создать 
+    или изменить статью о персонаже. Статьи удаляются только администратором.
   </div>
 </div>
-    {% if session['username'] %}
-         <div class="alert alert-danger" role="alert">Привет, {{ name }}</div>
-      <a href="/add">Добавить статью</a>
-    {% else %}
-      <a href="/login">Добавить статью</a>
-    {% endif %}
-{% for item in news['characters'] %}
+<a href="/add">Добавить статью</a>
+{% if deleted %}
+  <div class="alert alert-warning" role="alert"> Удаление проведено успешно
+  </div>
+{% endif %}
+{% for item in news %}
     <div class="alert alert-dark" role="alert">
-        <h2>Новая статья: {{item['name']}}</h2>
+        <h2><p style="color:gray">Статья от {{item['creation_date']}}:</h2>
+        <h1><a href="/characters/{{item['id']}}">{{item['name']}}</a></h1>
         <div>{{item['source']}}</div>
-        <a href="/delete_news/{{item[0]}}">Удалить новость</a>
+        {% if name == 'admin' %}
+        <a href="/delete_article/{{item['id']}}">Удалить новость</a>
+        {% endif %}
     </div>
 {% endfor %}
   </div>
