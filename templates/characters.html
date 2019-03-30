@@ -5,13 +5,14 @@
       <div class="row">
     {% for item in characters %}
       <div class="col-md-4 mb-4">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 19rem;">
     {% if item['image'] %}
     <img src='{{item['image']}}' class="card-img-top"
-    style='max-height: 300; max-width: 300'>
+    style='max-height: 300px; width: 100%; object-fit: contain'>
     {% else %}
-    <img src="../static/img/nophoto.png" class="card-img-top">
+    <img src="/static/img/nophoto.png" class="card-img-top">
     {% endif %}
+    <title>Страница персонажей</title>
     <div class="card-body">
     <div class="card-block">
       <h5 class="card-source">{{item['name']}}</h5>
@@ -27,8 +28,10 @@
       {% else %}
         <p class="card-text">Об этом персонаже ничего не известно</p>
       {% endif %}
+      <a href="/like/{{item['id']}}" class="btn btn-primary">Нравится</a>
       <a href="/characters/{{item['id']}}"
-      class="btn btn-primary">Перейти на страницу</a>
+      class="btn btn-primary">Перейти на страницу</a><br>
+      <p style="color:gray">Рейтинг: {{ item['likes']}}
     </div>
     </div>
     </div>
@@ -38,6 +41,16 @@
     </div>
     {% endfor %}
     </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link"
+        href="/characters/page/1">1</a></li>
+        <li class="page-item"><a class="page-link"
+        href="/characters/page/2">2</a></li>
+        <li class="page-item"><a class="page-link"
+        href="/characters/page/3">3</a></li>
+      </ul>
+    </nav>
     </div>
     </body>
 {% endblock %}

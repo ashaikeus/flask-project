@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <html lang="ru">
+<title>Страница персонажа</title>
     {% if char_info['name'] %}
     <h1>{{ char_info['name'] }}</h1>
     {% if char_info['source'] %}
@@ -8,12 +9,13 @@
     {% endif %}
     {% if char_info['image'] %}
     <img src='{{ char_info['image'] }}' class="img-thumbnail"
-    alt={{ char_info['name'] }}>
+    alt={{ char_info['name'] }} style='max-height: 600px; width: auto;
+    align=left'>
     {% endif %}
         <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">День рождения:</th>
+      <th scope="col">Дата рождения:</th>
       <td>{{ char_info['birthdate'] }}</th>
       </tr>
       </thead>
@@ -31,11 +33,7 @@
       <td>{{ char_info['height'] }}</td>
     </tr>
     <tr>
-      <th scope="col">Вес:</th>
-      <td>{{ char_info['weight'] }}</td>
-    </tr>
-    <tr>
-      <th scope="col">Актер озвучки:</th>
+      <th scope="col">Актер/актер озвучки:</th>
       <td>{{ char_info['va'] }}</td>
     </tr>
     <tr>
@@ -43,24 +41,46 @@
       <td>{{ char_info['nicknames'] }}</td>
     </tr>
   </tbody>
+  </table>
+  <br>
+  <a href="/edit_article/{{char_info['id']}}" 
+  class="btn btn-primary">Редактировать страницу</a><br>
+  </div>
+  {% if name == 'admin' %}
+  <a href="/delete_article/{{char_info['id']}}"
+  class="btn btn-primary">Удалить страницу</a><br>
+  </div>
+  {% endif %}
+  {% if char_info['description'] %}
+      <div class="card">
+    <div class="card-body">
+     {{ char_info['description'] }}
+    </div>
+  </div>
+  {% endif %}
+  <p style="color:gray">
+  Последнее изменение страницы: {{char_info['creation_date']}}<br>
+  Автор страницы: <a href="/user/{{char_info['author_id']}}">
+  {{ char_info['author'] }}</a><br>
+  <hr>
+  <form action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <p style="color:black"><h2>{{ form.content.label }}<br></h2>
+  {{ form.content(cols=100) }}<br></p><p>
+  {{ form.submit }}</p>
+  </form>
+  {% for comm in comments %}
+    <div class='alert alert-light' role='alert'><p style='color:black'
+    align='left'>{{ comm.content }} <p style="color: gray" align='center'>
+    Комментарий от <i>{{ comm.user }}</i>
+    {% if name == 'admin' or name == comm.user %}
+      <a href="/delete_comment/{{comm['id']}}">(Нажмите, чтобы удалить)</a>
+    {% endif %}
+    </div>
+  {% endfor %}
     {% else %}
           <div class="alert alert-warning" role="alert">
           Этой страницы не существует
           </div>
-    {% endif %}
-    <a href="/edit_article/{{char_info['id']}}" 
-    class="btn btn-primary">Редактировать страницу</a><br>
-    </div>
-    {% if name == 'admin' %}
-    <a href="/delete_article/{{char_info['id']}}"
-    class="btn btn-primary">Удалить страницу</a><br>
-    </div>
-    {% endif %}
-    {% if char_info['description'] %}
-        <div class="card">
-      <div class="card-body">
-       {{ char_info['description'] }}
-      </div>
-    </div>
     {% endif %}
 {% endblock %}

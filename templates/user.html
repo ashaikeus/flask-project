@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <html lang="ru">
+<title>Страница пользователя</title>
     {% if user_info['username'] %}
       {% if user_info['username'] == name %}
       <h2>Ваша страница</h2>
@@ -25,4 +26,5 @@
           Этой страницы не существует
           </div>
     {% endif %}
+    {{ user_info['about'] }}
 {% endblock %}
