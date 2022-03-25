@@ -24,7 +24,3 @@ __Stuff I've implemented in this project:__
 ### Try admin privileges using this account:
 - login: admin
 - password: 9
-
-
-
-*March 2018*
